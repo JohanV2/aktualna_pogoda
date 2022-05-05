@@ -1,21 +1,23 @@
 var httpRequest
 var weather
 let btn = document.getElementById("ajaxButton")
+let userInput = document.querySelector("#input")
 var requestFull
 var requestMain = "http://api.openweathermap.org/data/2.5/weather?country=pl&appid=d5191dd8d94fb095413154a73038ce7d&units=metric&lang=pl&q="
 
 const getCityName = () => {
-    let userInput = document.querySelector("#input")
+    if (userInput.value == "") {
+        return
+    }
     requestFull = requestMain.concat(userInput.value)
     makeRequest()
 }
 
 function makeRequest() {
     httpRequest = new XMLHttpRequest()
-
     if (httpRequest == !0) {
         alert("cannot create an XMLHTTP instance")
-        return false
+        return
     }
     httpRequest.onreadystatechange = showRequest
     httpRequest.open("GET", requestFull)
@@ -33,6 +35,7 @@ function showRequest() {
         }
         else {
             console.log("problem: httpRequest status: " + httpRequest.status + ", probably wrong city name")
+            userInput.value = ""
             return false
         }
     }
