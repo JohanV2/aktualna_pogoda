@@ -13,7 +13,7 @@ let windHeadingField = document.querySelector("#wind_heading")
 
 
 var requestFull
-var requestMain = "http://api.openweathermap.org/data/2.5/weather?country=pl&appid=d5191dd8d94fb095413154a73038ce7d&units=metric&lang=pl&q="
+var requestMain = "https://api.openweathermap.org/data/2.5/weather?country=pl&appid=d5191dd8d94fb095413154a73038ce7d&units=metric&lang=pl&q="
 var weatherFull = {
     city: "",
     weatherType: "",
