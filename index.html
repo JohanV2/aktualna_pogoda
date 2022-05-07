@@ -5,20 +5,21 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Check weather!</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-	<input id="input" type="text"></input>
-	<button id="ajaxButton" type="button">Sprawdź pogodę!</button>
-	<p>Miasto: <span id="city"></span> </p>
-	<p>Pogoda: <span id="weather_type"></span></p>
-	<p>Temperatura: <span id="temperature"></span></p>
-	<p>Ciśnienie: <span id="pressure"></span></p>
-	<p>Widoczność: <span id="visibility"></span></p>
-	<p>Siła wiatru: <span id="wind_speed"></span></p>
-	<p>Kierunek wiatru: <span id="wind_heading"></span></p>
+	<h1>Check current weather</h1>
+	<input id="input" type="text" placeholder="Type city name"></input>
+	<button id="ajaxButton" type="button">Check weather!</button>
+	<p><span class="names">City: </span><span id="city"></span> </p>
+	<p><span class="names">Weather: </span><span id="weather_type"></span></p>
+	<p><span class="names">Temperature: </span><span id="temperature"></span></p>
+	<p><span class="names">Pressure: </span><span id="pressure"></span></p>
+	<p><span class="names">Visibility: </span><span id="visibility"></span></p>
+	<p><span class="names">Wind speed: </span><span id="wind_speed"></span></p>
+	<p><span class="names">Wind direction: </span><span id="wind_heading"></span></p>
 
 
 	<script src="request.js"></script>

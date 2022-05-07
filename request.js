@@ -13,7 +13,7 @@ let windHeadingField = document.querySelector("#wind_heading")
 
 
 var requestFull
-var requestMain = "https://api.openweathermap.org/data/2.5/weather?country=pl&appid=d5191dd8d94fb095413154a73038ce7d&units=metric&lang=pl&q="
+var requestMain = "https://api.openweathermap.org/data/2.5/weather?country=pl&appid=d5191dd8d94fb095413154a73038ce7d&units=metric&q="
 var weatherFull = {
     city: "",
     weatherType: "",
@@ -59,7 +59,7 @@ function showRequest() {
             weatherTypeField.textContent = weatherFull.weatherType
 
             weatherFull.temperature = weatherResponse.main.temp
-            temperatureField.textContent = weatherFull.temperature + " stC"
+            temperatureField.textContent = weatherFull.temperature + " degC"
 
             weatherFull.pressure = weatherResponse.main.pressure
             pressureField.textContent = weatherFull.pressure + " hPa"
@@ -71,7 +71,7 @@ function showRequest() {
             windSpeedField.textContent = weatherFull.windSpeed + " m/s"
 
             weatherFull.windHeading = weatherResponse.wind.deg
-            windHeadingField.textContent = weatherFull.windHeading + " st"
+            windHeadingField.textContent = weatherFull.windHeading + " deg"
         }
         else {
             alert("problem: httpRequest status: " + httpRequest.status + ", probably wrong city name")
