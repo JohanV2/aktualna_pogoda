@@ -24,6 +24,14 @@ var weatherFull = {
     windHeading: ""
 }
 
+//////////////
+// import local from './languages.js';
+import { settings } from './languages.js'
+
+
+console.log(settings.en.city)
+////////////
+
 const getCityName = () => {
     if (userInput.value == "") {
         return
