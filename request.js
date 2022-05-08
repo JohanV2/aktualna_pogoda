@@ -2,6 +2,8 @@ var httpRequest
 var weather
 let btn = document.getElementById("ajaxButton")
 let userInput = document.querySelector("#input")
+let languageChangeBtn = document.getElementById("language_change_btn")
+let local = "pl"
 
 let cityField = document.querySelector("#city")
 let weatherTypeField = document.querySelector("#weather_type")
@@ -28,15 +30,36 @@ var weatherFull = {
 // import local from './languages.js';
 import { settings } from './languages.js'
 
-
 console.log(settings.en.city)
+console.log(settings[local]["temperature"])
+
+function languageSet() {
+    document.getElementById("language_change_btn").textContent = local.toUpperCase()
+    document.getElementById("cityL").textContent = settings[local]["city"]
+    document.getElementById("weather_typeL").textContent = settings[local]["weather_type"]
+    document.getElementById("temperatureL").textContent = settings[local]["temperature"]
+    document.getElementById("pressureL").textContent = settings[local]["pressure"]
+    document.getElementById("visibilityL").textContent = settings[local]["visibility"]
+    document.getElementById("wind_speedL").textContent = settings[local]["wind_speed"]
+    document.getElementById("wind_headingL").textContent = settings[local]["wind_heading"]
+}
+function languageChange() {
+    if (local == "en") {
+        local = "pl"
+    }
+    else {
+        local = "en"
+    }
+    languageSet()
+    getCityName()
+}
 ////////////
 
 const getCityName = () => {
     if (userInput.value == "") {
         return
     }
-    requestFull = requestMain.concat(userInput.value)
+    requestFull = requestMain.concat(userInput.value, "&lang=", local)
     makeRequest()
 }
 
@@ -55,7 +78,7 @@ function showRequest() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
             console.log(httpRequest)
-            weatherResponse = JSON.parse(httpRequest.response)
+            let weatherResponse = JSON.parse(httpRequest.response)
             console.log(weatherResponse)
             console.log("weather: ", weatherResponse.name, weatherResponse.visibility);
 
@@ -88,8 +111,9 @@ function showRequest() {
     }
     userInput.value = ""
 }
-
-btn.addEventListener('click', getCityName)
+languageSet()
+btn.addEventListener("click", getCityName)
+languageChangeBtn.addEventListener("click", languageChange)
 
 
 

@@ -10,20 +10,21 @@
 </head>
 
 <body>
-	<p id = "test"></p>
+	<p id="test"></p>
 	<h1>Check current weather</h1>
+	<button id = "language_change_btn"></button>
 	<input id="input" type="text" placeholder="Type city name"></input>
 	<button id="ajaxButton" type="button">Check weather!</button>
-	<p><span class="names">City: </span><span id="city"></span> </p>
-	<p><span class="names">Weather: </span><span id="weather_type"></span></p>
-	<p><span class="names">Temperature: </span><span id="temperature"></span></p>
-	<p><span class="names">Pressure: </span><span id="pressure"></span></p>
-	<p><span class="names">Visibility: </span><span id="visibility"></span></p>
-	<p><span class="names">Wind speed: </span><span id="wind_speed"></span></p>
-	<p><span class="names">Wind direction: </span><span id="wind_heading"></span></p>
+	<p> <span class="names" id="cityL"></span><span id="city"></span></p>
+	<p> <span class="names" id="weather_typeL"></span><span id="weather_type"></span></p>
+	<p> <span class="names" id="temperatureL"></span><span id="temperature"></span></p>
+	<p> <span class="names" id="pressureL"></span><span id="pressure"></span></p>
+	<p> <span class="names" id="visibilityL"></span><span id="visibility"></span></p>
+	<p><span class="names" id="wind_speedL"></span><span id="wind_speed"></span></p>
+	<p> <span class="names" id="wind_headingL"></span><span id="wind_heading"></span></p>
 
 
-	<script type = "module" src="request.js"></script>
+	<script type="module" src="request.js"></script>
 </body>
 
 </html>
