@@ -15,9 +15,28 @@ span.names {
 }
 
 button#language_change_btn {
-    width: 4em
+    width: 2.5em;
+    margin-left: 2em;
+    background-color: rgb(246, 220, 220);
+    border-radius: 3px;
+    transition-duration: 0.3s;
+}
+
+button#language_change_btn:hover {
+    background-color: rgb(255, 82, 82);
+}
+
+div.head {
+    display: flex;
+    align-items: center;
+
+}
+
+h1 {
+    display: inline-block;
+    width: 750px
 }
 
 button#ajaxButton {
-    width: 10em
+    width: 10em;
 }
