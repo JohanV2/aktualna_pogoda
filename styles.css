@@ -13,3 +13,11 @@ span.names {
     display: inline-block;
     width: 180px;
 }
+
+button#language_change_btn {
+    width: 4em
+}
+
+button#ajaxButton {
+    width: 10em
+}

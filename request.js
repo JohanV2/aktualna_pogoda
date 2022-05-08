@@ -1,5 +1,5 @@
 var httpRequest
-var weather
+let cityTyped
 let btn = document.getElementById("ajaxButton")
 let userInput = document.querySelector("#input")
 let languageChangeBtn = document.getElementById("language_change_btn")
@@ -34,6 +34,9 @@ console.log(settings.en.city)
 console.log(settings[local]["temperature"])
 
 function languageSet() {
+    document.getElementById("header").textContent = settings[local]["header"]
+    document.getElementById("input").setAttribute("placeholder", settings[local][`input`])
+    document.getElementById("ajaxButton").textContent = settings[local]["button"]
     document.getElementById("language_change_btn").textContent = local.toUpperCase()
     document.getElementById("cityL").textContent = settings[local]["city"]
     document.getElementById("weather_typeL").textContent = settings[local]["weather_type"]
@@ -51,7 +54,10 @@ function languageChange() {
         local = "en"
     }
     languageSet()
-    getCityName()
+    if (cityTyped == undefined) {
+        return false
+    }
+    getCityNameLanguageSwitch()
 }
 ////////////
 
@@ -60,8 +66,15 @@ const getCityName = () => {
         return
     }
     requestFull = requestMain.concat(userInput.value, "&lang=", local)
+    cityTyped = userInput.value
     makeRequest()
 }
+
+const getCityNameLanguageSwitch = () => {
+    requestFull = requestMain.concat(cityTyped, "&lang=", local)
+    makeRequest()
+}
+
 
 function makeRequest() {
     httpRequest = new XMLHttpRequest()
@@ -90,7 +103,7 @@ function showRequest() {
             weatherTypeField.textContent = weatherFull.weatherType
 
             weatherFull.temperature = weatherResponse.main.temp
-            temperatureField.textContent = weatherFull.temperature + " degC"
+            temperatureField.innerHTML = weatherFull.temperature + " &#176;C"
 
             weatherFull.pressure = weatherResponse.main.pressure
             pressureField.textContent = weatherFull.pressure + " hPa"
@@ -102,7 +115,7 @@ function showRequest() {
             windSpeedField.textContent = weatherFull.windSpeed + " m/s"
 
             weatherFull.windHeading = weatherResponse.wind.deg
-            windHeadingField.textContent = weatherFull.windHeading + " deg"
+            windHeadingField.innerHTML = weatherFull.windHeading + " &#176;"
         }
         else {
             alert("problem: httpRequest status: " + httpRequest.status + ", probably wrong city name")
